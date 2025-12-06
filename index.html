@@ -9,13 +9,12 @@
     body {
       margin: 0;
       font-family: 'Roboto Condensed', sans-serif;
-      background: linear-gradient(270deg, magenta, cyan, lime, orange, violet);
-      background-size: 1000% 1000%;
-      animation: bgShift 30s ease infinite;
-      color: white;
+      background: white;
+      color: black;
       text-transform: uppercase;
       overflow-x: hidden;
       position: relative;
+      cursor: crosshair;
     }
     
     /* Noise texture overlay */
@@ -26,16 +25,10 @@
       left: 0;
       width: 100%;
       height: 100%;
-      opacity: 0.15;
+      opacity: 0.03;
       z-index: 0;
       pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
-
-    @keyframes bgShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
 	  
     @keyframes rainbowGradient {
@@ -45,18 +38,18 @@
     }
 	  
     h1 {
-      font-size: 140px;
+      font-size: 180px;
       font-weight: 900;
       text-align: center;
-      background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+      background: linear-gradient(90deg, black, red, black, orange, black, yellow, black, green, black, cyan, black, blue, black, violet);
       background-size: 1000% 1000%;
-      animation: bgShift 30s ease infinite;
+      animation: rainbowGradient 30s ease infinite;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       color: transparent;
-      letter-spacing: -2px;
+      letter-spacing: -3px;
       margin: 10px 0 5px;
-      line-height: 0.9;
+      line-height: 0.85;
       position: relative;
       z-index: 2;
     }
@@ -66,7 +59,7 @@
       display: flex;
       justify-content: center;
       gap: 1rem;
-      max-width: 1400px;
+      max-width: 1600px;
       margin: 0 auto 20px;
       position: relative;
       z-index: 2;
@@ -74,37 +67,38 @@
 
     #slots .column {
       position: relative;
-      width: 320px;
-      height: 140px;
+      width: 380px;
+      height: 160px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 64px;
+      font-size: 76px;
       font-weight: 900;
     }
 
     #slots .column span {
       position: absolute;
       text-align: center;
-      line-height: 0.95;
-      letter-spacing: -1px;
+      line-height: 0.9;
+      letter-spacing: -2px;
     }
 
     #history {
-      max-width: 1400px;
+      max-width: 1600px;
       margin: 10px auto 0;
       text-align: left;
-      font-size: 58px;
+      font-size: 72px;
       font-weight: 900;
-      line-height: 0.95;
+      line-height: 0.9;
       position: relative;
       z-index: 2;
+      padding: 0 20px;
     }
 
     .set {
       display: flex;
       gap: 15px;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       align-items: baseline;
       opacity: 1;
       transform: translateX(0);
@@ -129,21 +123,21 @@
     }
 
     .set-number {
-      font-size: 45px;
+      font-size: 55px;
       font-weight: 900;
-      opacity: 0.3;
+      opacity: 0.2;
       margin-right: 15px;
     }
 
     #go {
       display: block;
       margin: 5px auto 15px;
-      font-size: 110px;
+      font-size: 140px;
       font-weight: 900;
       text-transform: uppercase;
       background: linear-gradient(
-        270deg,
-        red, orange, yellow, green, cyan, blue, violet, red
+        90deg,
+       black, red, black, orange, black, yellow, black, green, black, cyan, black, blue, black, violet
       );
       background-size: 600% 600%;
       -webkit-background-clip: text;
@@ -156,7 +150,7 @@
       animation: floaty 0.6s infinite, rainbowGradient 6s infinite linear;
       position: relative;
       z-index: 2;
-      letter-spacing: -2px;
+      letter-spacing: -3px;
     }
 
     @keyframes floaty {
@@ -192,24 +186,52 @@
         transform: translate(var(--tx), var(--ty)) rotate(720deg) scale(0);
       }
     }
+    
+    /* Mouse trail symbols */
+    .trail-symbol {
+      position: fixed;
+      pointer-events: none;
+      font-size: 14px;
+      color: black;
+      opacity: 0;
+      z-index: 1;
+      font-weight: 900;
+      animation: trailFade 1s ease-out forwards;
+    }
+    
+    @keyframes trailFade {
+      0% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.3) rotate(180deg);
+      }
+    }
 
     footer {
-      max-width: 1400px;
+      max-width: 1600px;
       text-align: center;
       margin: 20px auto;
       padding: 0 20px;
       font-size: 18px;
       font-weight: 700;
-      opacity: 0.7;
+      opacity: 0.5;
       position: relative;
       z-index: 2;
       line-height: 1.3;
+    }
+    
+    footer a {
+      color: black;
+      text-decoration: underline;
     }
 
     /* --- MOBILE RESPONSIVE STYLES --- */
     @media (max-width: 768px) {
       h1 {
-        font-size: 70px;
+        font-size: 80px;
         margin-top: 5px;
       }
       #slots {
@@ -219,23 +241,23 @@
       }
       #slots .column {
         width: auto;
-        height: 100px;
-        font-size: 58px;
+        height: 110px;
+        font-size: 64px;
       }
       #history {
-        font-size: 38px;
+        font-size: 44px;
         padding: 0 10px;
       }
       .set {
         gap: 10px;
-        margin-bottom: 3px;
+        margin-bottom: 5px;
       }
       .set-number {
-        font-size: 28px;
+        font-size: 32px;
         margin-right: 10px;
       }
       #go {
-        font-size: 70px;
+        font-size: 80px;
       }
       footer {
         font-size: 14px;
@@ -271,89 +293,105 @@
 
   <script>
     const column1 = [
-      "ACID","AIRBRUSH","ALCHEMICAL","ALPHA","ANDROIDD","ANTI","APPALACHIAN", "ART SCHOOL","ARTISANAL","AUTUMNAL",
+      "ACID","AIRBRUSHED","ALCHEMICAL","ALPHA","ANDROID","ANTI","APPALACHIAN", "ART SCHOOL","ARTISANAL","AUTUMNAL",
       "AUTO","AVANTE-GARDE","BALLROOM","BEAUTY PAGEANT","BIG BOX","BIOLUMINESCENT","BLANK","BLOOD","BOURGEOIS","BROADWAY", "BROOKLYN",
-      "BROWNSTONE", "BUFFET TABLE", "BUSINESS CLASS", "CANDY","CAPITALIST","CELESTIAL", "CHERRY BLOSSOM","CHILLAXED","CLASSIC","CLUMSY",
-      "CLOUD","CORPORATE","CORRUPTED","COSMIC","COTTON CANDY","COUNTRY", "CRUNCHY","CRUNCHY GURU",
-      "CRYPTO","CUBIST","CUTE","DANDY", "DARK","DEAD","DIGITAL","DOG PARK", "DOOM","DOUBLE","DOWNTOWN",
-      "DREARY EERIE","DRUNKEN","ECSTACY","ECO","ELDRITCH","EMCEE","ESCAPIST", "EXTRA EXTRA","EXTREME", "FAKE","FANCY",
-      "FARMERS MARKET","FAUX-NAIVE", "FREESTYLE","FUN-SIZE", "GEOLOGICAL","GIGA","GLOSSY","GOLDEN AGE","GOLDEN HOUR","GOOFBALL","GOTHIC",
-      "GRECO-ROMAN","GROTESQUE","GUMBALL", "HAUNTED","HARD","HIGH GLOSS","HIGH SCHOOL","HOME SCHOOLED",
-      "HYPER","INDIE","INTERSPECIES","JUNK DRAWER","JUNKYARD","KITSCH","LACTOSE INTOLERANT", "LOSSY","LO-FI",
-      "LO-TECH","LUNAR","MAGIC KINGDOm", "MARSHMALLOW","MEATBALL", "META","MIDDLE AMERICAN", "MIDDLE CHILD", "MILLENIAL", "MINIMAL","MOONBEAM",
-      "MOUSE", "MULTILINGUAL","MYSTIC","NANO","NAUTICAL", "NEGATIVE","NEO","NEON","NEW", "NEXT LEVEL", "OBSERVATIONAL",
+      "BROWNSTONE","BUFFET TABLE", "BUSINESS CLASS", "CANDY","CAPITALIST","CELESTIAL","CHILLAXED","CLASSIC","CLUMSY",
+      "CLOUD","CORPORATE","CORRUPTED","COSMIC","COTTON CANDY","CORRUPT", "COUNTRY", "COZY", "CRUNCHY","CRUNCHY GURU",
+      "CRYPTO","CUBIST","CUTE","CYBER","DANDY", "DARK","DEAD","DIGITAL","DOG PARK", "DOOM","DOUBLE","DOWNTOWN",
+      "DREARY EERIE","DRUNKEN","ECSTACY","ECO","ELDRITCH","EMCEE","EMO","ESCAPIST", "EXTRA EXTRA","FAKE","FANCY MERMAID",
+      "FARMERS MARKET","FAUX-NAIVE", "FREESTYLE","FUN-SIZE", "GERMAPHOBIC","GEOLOGICAL","GIGA","GLOSSY","GOLDEN AGE","GOLDEN HOUR","GOOFBALL","GOTHIC",
+      "GRECO-ROMAN","GROTESQUE","GUMBALL", "HAUNTED","HARD","HIGH GLOSS","HOME-SCHOOLED",
+      "HYPER","INDIE","INTERSPECIES","JUNKYARD","KITSCH","LACTOSE INTOLERANT", "LOSSY","LO-FI",
+      "LO-TECH","LUNAR","MARSHMALLOW","MEATBALL", "META","MIDDLE AMERICAN",  "MILLENIAL", "MINIMAL","MOONBEAM",
+      "MULTILINGUAL","MYSTIC","NANO","NAUTICAL", "NEGATIVE","NEO","NEON","NEW", "NEXT LEVEL", "OBSERVATIONAL",
       "OLD MASTER","OLD SCHOOL","OLD TIMEY", "OUTLAW","OVERSENSTIVE","PAGAN","PASTEL","PARKING LOT",
-      "PHANTOM","PLASTIC","PLASTIC","POLO SHIRT","POMPOM","POST","POSNATURAL", "PREHISTORIC","PREPPER", "PROFESSOR",
-      "PROTO","PULP","PSYCHO", "RADICAL","RAPSCALLION","REGIONAL","RETIREMENT","ROMANTICAL","RUBBER",
-      "SCANDINAVIAN","SEAWEED SALAD","SCIENTIFIC","SIDECROLL","SHADOW","SLIPPERY","SLOPPY","SOFT",
-      "SOLAR","SOUTHERN","SOUTHWESTERN","SPACE","SPECULATIVE","SPIRITUAL","STREAMLINED",
-      "STRONG","SUBURBAN","SUPER","TEXTURAL","TIDAL","TIGER","TROPICAL",
-      "TRIPLE","TURTLENECK","UBER","UGLY","ULTRA","ULTRA","UNDERGROUND", "VECTOR","VISIONARY","WATER COOLER",
+      "PHANTOM","PLASTIC","PLASTIC","POLO SHIRT","POMPOM","POST","POSTNATURAL", "PREHISTORIC", "PROFESSORIAL",
+      "PROTO","PULP","PSYCHO", "RADICAL","RAPSCALLION","REGIONAL","RETIREMENT HOME","ROMANTICAL","RUBBER",
+      "SCANDINAVIAN","SCIENTIFIC","SIDECROLL","SHADOW","SLIPPERY","SLOPPY","SOFT",
+      "SOLAR","SOUTHERN","SOUTHWESTERN","SPACE","SPECULATIVE","SPIRITUAL","STREAMING", "STREAMLINED",
+      "STRONG","SUBURBAN","SUPER","SUPER EXTREME","TEXTURAL","TIDAL","TIGER","TRIBAL", "TROPICAL",
+      "TRIPLE","TURTLENECK","TYPOGRAPHIC", "UBER","UGLY","ULTRA","ULTRA","UNDERGROUND", "VECTORLINE","VELVET","VISIONARY","WATER COOLER",
       "WEIRD","WEREWOLF", "WEST COAST","WESTERN","WILD","YARD SALE", "YE OLDE"
     ];
 
     const column2 = [
-      "8-BIT","ACID","AGITPROP","AMERICANA","ANALOG","ANIME","ART DECO",
-      "ART NOUVEAU","ATHLEISURE", "BAROQUE","BALLOON","BAUHAUS","BEASTMASTER","BITMAP","BLANK CASSETTE",
+      "8-BIT","ACID","ACID DESIGN","AGITPROP","AMERICANA","ANALOG","ANIME","ART DECO",
+      "ART NOUVEAU","ATHLEISURE", "BAROQUE","BALLOON","BARBEQUE","BAUHAUS","BEASTMASTER","BITMAP","BLACK DRESS", "BLANK CASSETTE",
       "BLOSSOM","BOARD GAME", "BOHEMIAN","BOUTIQUE","BRAINROT","BRUTALISM","BUBBLE","BUREAUCRACY",
-      "CAMARO","CANDLELIGHT","CARICATURE","CARNIVORE", "CAVE","CAVEMAN","CHEWBACCA","CHRISTMAS","CLASSICAL",
-      "COLONIAL WANDERLUST", "COMPRESSION", "CONSTRUCTIVISM", "CORPORATE","CORPORATE HIPPIE","COTTAGECORE",
-      "COWBOY","CRAFT","CRYPTO","CUBIST","CYBER","CYBERBOUGIE","DADA","DARK ACADEMIA",
-      "DEFAULT","DE STIJL","DEBUTANTE","DOLLAR STORE","DUMPSTER","DUNGEON",
-      "DUNGEONCORE","ECSTACY","EMO","FAIRY","FAIRYLIFE","FANTASY","FENG SHUI","FLAT","FOLK","FRASURBANE",
-      "FRUTIGER AERO","FUTURE","FUTURISM","GARDENPOP","GENDER","GENERATIVE","GIGPOSTER","GLOWWORM","GOBLIN",
-      "GOOGIE","GOTH","GRANOLA","GRIMOIRE","GRIZZLY BEAR", "GRUNGE","HAIR BAND","HAPPY MEAL","HARAJUKU","HEAVY METAL","HIPSTER",
-      "HORROR","HYGGE","HYPEBEAST", "IMPRESSIONIST","INDIECRAFT","INTERNET","ISLAND","JUNKYARD",
-      "KAIJU","KAWAII","KITSCH", "LAWN ORNAMENT","LIGHTHOUSE","MARCHING BAND","MAXIMALISM","MCBLING",
-      "MEDIEVAL","MEMPHIS","MANGA","MINIMALISM","MINIMALISM","NAIVE","NAUTICAL","NERDLIFE",
-      "NEW AGE","NORMCORE","NOISE","OOZE","ORGANIC MODERN","PALIMPSEST","PANDA","PARADE", "PARADISE", "PASTICHE",
-      "PIRATE TIME","PLUSH","POP POP","POTATO CHIP", "PREPPY","PSYCHEDELIA","PUMPKIN SPICE","PUNK","QUAKER","REALISM",
-      "ROCOCO","ROMANESQUE","ROM COM","SCI-FI","SEWER","SHITPIC","SHROOM","SKUEMORPHISM",
-      "SKELETON ARMY","SLEAZE","SONDER","SPORTSBRUT","STARBUCKS","STEAMPUNK","SURFER",
-      "SURREALISM","SURREALIST","SWISS","SYNTH","SYNTH","TEDDY","TRASH","UTOPIAN SCHOLASTIC",
-      "VACATIONLAND","VALLEY GIRL","VAPORWAVE","VAUDEVILLE","VICTORIAN","VIRTUAL","WABI SABI", "WEB 1.0",
-      "WEREWOLF","WITCHCRAFT","WIRED","WOLF MOTHER", "WOODLAND","WIGGLE","WHIMSY","WHISPER","Y2K"
+      "CAMARO","CANDLELIGHT","CARICATURE","CARNIVORE", "CAVE","CAVEMAN","CHERRY BLOSSOM","CHEWBACCA","CHRISTMAS","CLASSICAL",
+      "COLONIAL WANDERLUST", "COMPRESSION", "CONSTRUCTION", "CORPORATE","CORPORATE HIPPIE","COTTAGE CORE", "COUNTRY KITSCH","COURTROOM",
+      "COWBOY","CRAFT","CYBERBOUGIE","DADA","DARK ACADEMIA",
+      "DEFAULT","DEBUTANTE","DOLLAR STORE VERNACULAR","DUMPSTER","DUNGEON",
+      "DUNGEONCORE","ECSTACY","FAIRY","FAIRYLIFE","FANTASY","FAST FOOD", "FLAT","FOLK","FRASURBANE",
+      "FRUTIGER AERO","FUTURE","FUTURISM","GARDENPOP","GEARHEAD", "GENDER","GENERATIVE","GIGPOSTER","GLOWWORM","GNOME","GOBLIN",
+      "GOOGIE","GOTH","GRANOLA","GRIMOIRE","GRIZZLY BEAR", "GRUNGE","HAIR BAND","HAMBURGER", "HAPPY MEAL", "HARAJUKU","HEAVY METAL","HIGH SCHOOL","HIPSTER",
+      "HOLLYWOOD", "HORROR","HYGGE","HYPEBEAST", "IMPRESSIONIST","INDIECRAFT","INTERNET AWESOMESAUCE","ISLAND","JUNK DRAWER","JUNKYARD",
+      "KAIJU","KAWAII","LAWN ORNAMENT","LIGHTHOUSE","MANIMAL","MARCHING BAND","MAXIMALISM","MCBLING",
+      "MEDIEVAL","MEMPHIS","MAGIC KINGDOm", "MANGA","MEANINGLESSNESS", "MIDDLE CHILD","MINIMALISM","MINIMALISM","NAIVE","NAUTICAL","NERDLIFE",
+      "NEW AGE","NORMCORE","NOISE","NOSTALGIA", "OOZE","ORGANIC MODERN","PALIMPSEST","PANDA","PARADE", "PARADISE", "PASTICHE","PIONEER",
+      "PIRATE TIME","PLUSH","POP POP","POTATO CHIP", "PREPPER","PSYCHEDELIA","PTERADACTYL", "PUMPKIN SPICE","PUNK","QUAKER","RAGE BAIT", "RAT RACE", "REALISM",
+      "ROCOCO","ROMANESQUE","ROM COM","SCI-FI","SEAWEED SALAD","SEWER","SHITPIC","SHROOM","SKUEMORPHISM",
+      "SKELETON ARMY","SONDER","SPORTSBRUT","STARBUCKS","STEAMPUNK","SURFER",
+      "SURREALISM","SURREALIST","SWISS","TRASH","UTOPIAN SCHOLASTIC",
+      "VACATIONLAND","VALLEY GIRL","VAMPIRE", "VAPORWAVE","VAUDEVILLE","VICTORIAN","VIRAL", "VIRTUAL","WABI SABI","WELLNESS",
+      "WEREWOLF","WITCHCRAFT","WIRED","WOODLAND","WIGGLE","WHIMSY","WHISPER","Y2K"
     ];
 
     const column3 = [
-      "1.0","2.0","3.0","A.F.","AESTHETIC","AESTHETIC","AFTERPARTY", "ARCADE","BOOGIE","BOY","CASTLE","CHIC","CHIC","CONCEPT POP",
+      "1.0","2.0","3.0","A.F.","AESTHETIC","AFTERPARTY", "ARCADE","BOOGIE","BOY","CHIC","CONCEPT POP",
       "CORE","COTTAGECORE","COVE","CULT","DANCE PARTY", "DOT COM","DRIP","DUNGEONCORE","ECHO CHAMBER", "EFFECT",
-      "ENNUI","FOLK POP", "FORMULA", "FREESTYLE", "FUZZIES","GATE","GAZE","GLOW","GRAFIX","GRAFIX","GRUNGE","HAPTIC",
-      "HORROR SHOW","HOUSE", "INC", "IN RETROGRADE", "INDIECRAFT","INFLUENCER B.S.", "INTERNATIONAL","LEWK", "LEWKS", "LORE","LTD", "MAXIMALISM","MINIMALISM","MINIMALISM",
-      "MIST","MONSTER", "MOOD","MOVEMENT","NERDCORE", "NOIR", "NOISE","ON ACID", "PARTY", "PASTICHE","POP","POP","PULSE",
-      "PUNK","PSYCHO","REALISM","REALM","RETAIL", "RIOT","SCHOOL","SCHOOL","SHIFT","SLEAZE","SLEAZE","SPRINKLEPOP","SQUARED",
-      "STYLE","STYLE","STYLE","STYLE","SURREALISM","SYNTH","TECH","TONE","TREND","TYPE","UNLIMITED","VERNACULAR",
-      "VISION","VIBE","VIBE","VIBES","VOID","WAVE","WAVE","WHOLESALE", "WILD STYLE","WONDERLAND", "WORLD"
+      "ENNUI","FENG SHUI","FOLK POP", "FORMULA", "FREESTYLE", "FUZZIES","GATE","GAZE","GLOW","GRAFIX","GRUNGE","HAPTIC",
+      "HORROR SHOW","HOUSE", "INC", "IN RETROGRADE", "INDIECRAFT","INFERNO","INFLUENCER B.S.", "INTERNATIONAL","LEWK", "LEWKS", "LORE","LTD", "MAXIMALISM","MINIMALISM", "MIST","MONSTER", "MOOD","MOVEMENT","NERDCORE", "NIHILISM", "NOIR", "NOISE","ON ACID", "PARTY", "PASTICHE","POP","PULSE",
+      "PUNK","PSYCHO","REALISM","REALM","RETAIL", "RIOT","SCHOOL","SHIFT","SLEAZE","SPRINKLEPOP","SQUARED",
+      "STYLE","SURREALISM","SYNTH","TECH","TIME","TREND","TYPE","UNLIMITED","VERNACULAR",
+      "VISION","VIBE","VIBES","VOID","WAVE","WHOLESALE","WONDERLAND", "WORLD"
     ];
+    
+    // Symbols for mouse trail
+    const trailSymbols = ['✦', '◆', '●', '■', '▲', '✱', '◊', '✕', '※', '⋆', '▸', '◈', '+', '×', '·'];
 
-    const colors = generateRainbowColors(48);
     let historyCount = 0;
-
-    function generateRainbowColors(count = 48, saturation = 100, lightness = 50) {
-      const colors = [];
-      for (let i = 0; i < count; i++) {
-        const hue = Math.round((360 / count) * i);
-        colors.push(`hsl(${hue}, ${saturation}%, ${lightness}%)`);
-      }
-      return colors;
-    }
+    let lastTrailTime = 0;
 
     function randomWord(array) {
       return array[Math.floor(Math.random() * array.length)];
     }
-
-    function randomColor() {
-      return colors[Math.floor(Math.random() * colors.length)];
+    
+    function randomSymbol() {
+      return trailSymbols[Math.floor(Math.random() * trailSymbols.length)];
     }
     
-    // Create particle effect
-    function createParticles(x, y, color) {
+    // Create mouse trail effect
+    function createTrailSymbol(x, y) {
+      const now = Date.now();
+      // Throttle to create symbol every 50ms
+      if (now - lastTrailTime < 50) return;
+      lastTrailTime = now;
+      
+      const symbol = document.createElement('div');
+      symbol.className = 'trail-symbol';
+      symbol.textContent = randomSymbol();
+      symbol.style.left = x + 'px';
+      symbol.style.top = y + 'px';
+      
+      document.body.appendChild(symbol);
+      
+      setTimeout(() => symbol.remove(), 1000);
+    }
+    
+    // Mouse move listener for trail
+    document.addEventListener('mousemove', (e) => {
+      createTrailSymbol(e.clientX, e.clientY);
+    });
+    
+    // Create particle effect for button click
+    function createParticles(x, y) {
       const particles = ['✦', '⭐', '✨', '◆', '●', '■'];
       for (let i = 0; i < 12; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.textContent = particles[Math.floor(Math.random() * particles.length)];
-        particle.style.color = color;
+        particle.style.color = 'black';
         particle.style.left = x + 'px';
         particle.style.top = y + 'px';
         
@@ -386,11 +424,10 @@
       const col1 = document.getElementById("col1");
       const col2 = document.getElementById("col2");
       const col3 = document.getElementById("col3");
-      const color = randomColor();
       
       // Create particles at button position
       const rect = e.target.getBoundingClientRect();
-      createParticles(rect.left + rect.width / 2, rect.top + rect.height / 2, color);
+      createParticles(rect.left + rect.width / 2, rect.top + rect.height / 2);
 
       spinColumn(col1, column1, 1500, () => {
         spinColumn(col2, column2, 2500, () => {
@@ -417,7 +454,7 @@
               const first = document.getElementById("h1");
               const firstSet = first.parentElement;
               first.textContent = phrase;
-              first.style.color = color;
+              first.style.color = 'black';
               
               // Trigger slide-in animation
               firstSet.classList.remove('slide-in');
@@ -426,9 +463,9 @@
               
               historyCount++;
               
-              col1.style.color = color;
-              col2.style.color = color;
-              col3.style.color = color;
+              col1.style.color = 'black';
+              col2.style.color = 'black';
+              col3.style.color = 'black';
             }, 1000);
           });
         });
