@@ -30,13 +30,13 @@
       pointer-events: none;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
-	  
+      
     @keyframes rainbowGradient {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-	  
+      
     h1 {
       font-size: 180px;
       font-weight: 900;
@@ -48,10 +48,23 @@
       -webkit-text-fill-color: transparent;
       color: transparent;
       letter-spacing: -3px;
-      margin: 10px 0 5px;
+      margin: 10px 0 1px;
       line-height: 0.85;
       position: relative;
       z-index: 2;
+    }
+
+    /* ---- NEW SUBHEADING STYLE ---- */
+    #subtitle {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 2px auto 20px; /* Spacing between header and slots */
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 0px;
+      line-height: 1.2;
     }
 
     /* ---- FIXED HEIGHT CONTAINER FOR SPINNING WORDS ---- */
@@ -234,6 +247,11 @@
         font-size: 80px;
         margin-top: 5px;
       }
+      #subtitle {
+        font-size: 16px;
+        padding: 0 20px;
+        margin-bottom: 20px;
+      }
       #slots {
         flex-direction: column;
         align-items: center;
@@ -267,6 +285,9 @@
 </head>
 <body>
   <h1>STYLE GENERATOR</h1>
+  
+  <div id="subtitle">generate options, choose one, and make it happen</div>
+
   <div id="slots">
     <div class="column"><span id="col1">WHAT</span></div>
     <div class="column"><span id="col2">IS</span></div>
@@ -325,7 +346,7 @@
       "DUNGEONCORE","ECSTACY","FAIRY","FAIRYLIFE","FANTASY","FAST FOOD","FOLKSY","FRASURBANE",
       "FRUTIGER AERO","FUTURE","FUTURISM","GARDENPOP","GEARHEAD", "GENDER","GENERATIVE","GIGPOSTER","GLITTER","GLOWWORM","GNOME","GOBLIN",
       "GOOGIE","GOTH","GRANOLA","GRIMOIRE","GRIZZLY BEAR", "GRUNGE","HAIR BAND","HAMBURGER", "HAPPY MEAL", "HARAJUKU","HEAVY METAL","HIGH SCHOOL","HIPSTER",
-      "HOLLYWOOD", "HORROR","HYGGE","HYPEBEAST", "IMPRESSIONISM","INDIECRAFT","INTERNET AWESOMESAUCE","ISLAND","JUNK CASE","JUNK DRAWER","JUNKYARD",
+      "HOLLYWOOD", "HORROR","HYGGE","HYPEBEAST", "IMPRESSIONISM","INDIECRAFT","ISLAND","JUNK CASE","JUNK DRAWER","JUNKYARD",
       "KAIJU","KAWAII","LAWN ORNAMENT","LIGHTHOUSE","MANIMAL","MARCHING BAND","MAXIMALISM","MCBLING",
     "MEMPHIS","MAGIC KINGDOm", "MANGA","MEANINGLESSNESS", "MIDDLE CHILD","MINIMALISM","MINIMALISM","NAIL POLISH", "NAIL SALON","NAIVE","NAUTICAL","NERDLIFE",
       "NEW AGE","NORMCORE","NOISE","NOSTALGIA", "OOZE","ORGANIC MODERN","PALIMPSEST","PANDA","PARADE", "PARADISE", "PASTICHE","PIONEER",
@@ -474,5 +495,3 @@
   </script>
 </body>
 </html>
-
-
